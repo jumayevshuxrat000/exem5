@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./src/output.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./src/output.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 </style>
+
 <body>
   <header class="border-b border-amber-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-3">
 
       <div class="flex items-center gap-3">
         <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="Logo" class="h-8">
-        
-        <button class="flex items-center gap-2 bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700 transition">
+
+        <button
+          class="flex items-center gap-2 bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700 transition">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
           <span>Kategoriyalar</span>
         </button>
@@ -53,14 +59,15 @@
           <span>Отследить</span>
         </div>
         <div class="flex flex-col items-center text-sm cursor-pointer relative">
-          <span class="material-icons">shopping_cart</span>
+          <span id="karzinka-btn" class="material-icons">shopping_cart</span>
           <span>Корзина</span>
           <span class="absolute -top-0 -right-0 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
         </div>
-        <div class="flex flex-col items-center text-sm cursor-pointer relative">
-          <span class="material-icons">favorite</span>
+        <div class="flex flex-col items-center text-sm cursor-pointer relative wishlist-open">
+          <button class="material-icons border-hidden cursor-pointer" id="wishlist-btn">favorite</button>
           <span>Избранное</span>
-          <span class="absolute -top-1 -right-0 bg-blue-600 text-white text-xs rounded-full px-1">10</span>
+          <span id="wishlist-count"
+            class="absolute -top-1 -right-0 bg-blue-600 text-white text-xs rounded-full px-1">10</span>
         </div>
         <div class="flex flex-col items-center text-sm cursor-pointer">
           <span class="material-icons">language</span>
@@ -73,7 +80,8 @@
       </div>
     </div>
     <nav class="bg-white border-t border-amber-100">
-      <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 text-gray-700 text-sm py-2 overflow-x-auto">
+      <div
+        class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 text-gray-700 text-sm py-2 overflow-x-auto">
         <a href="#" class="hover:text-blue-600">Супер цена</a>
         <a href="#" class="hover:text-blue-600">0-0-6</a>
         <a href="#" class="hover:text-blue-600">Лучшее для студентов</a>
@@ -86,516 +94,270 @@
     </nav>
   </header>
   <section class="p-8">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl p-5 font-bold">Супер цена</h2>
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl p-5 font-bold">Супер цена</h2>
 
-    <div class="bg-blue-700 w-full h-[360px] p-5 rounded-2xl flex items-center">
-      
-      <div class="flex gap-5 overflow-x-auto scrollbar-hide">
-        
-        <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
-          <img class="w-24 h-24 object-contain mx-auto mt-3" src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
-          
-          <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
-            Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
-          </h4>
-          
-          <div class="flex justify-between items-center mt-3">
-            <div>
-              <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
-              <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
-            </div>
-            <div class="text-right">
-              <p class="font-medium text-red-500 text-[13px]">-9%</p>
-              <p class="text-yellow-500 text-sm">⭐ 5</p>
-            </div>
-          </div>
-          
-          <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
-            01.10.2025
-          </button>
-        </div>
+      <div class="bg-blue-700 w-full h-[360px] p-5 rounded-2xl flex items-center">
 
-        <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
-          <img class="w-24 h-24 object-contain mx-auto mt-3" src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
-          <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
-            Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
-          </h4>
-          <div class="flex justify-between items-center mt-3">
-            <div>
-              <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
-              <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
-            </div>
-            <div class="text-right">
-              <p class="font-medium text-red-500 text-[13px]">-9%</p>
-              <p class="text-yellow-500 text-sm">⭐ 5</p>
-            </div>
-          </div>
-          <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
-            01.10.2025
-          </button>
-        </div>
-        <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
-          <img class="w-24 h-24 object-contain mx-auto mt-3" src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
-          <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
-            Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
-          </h4>
-          <div class="flex justify-between items-center mt-3">
-            <div>
-              <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
-              <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
-            </div>
-            <div class="text-right">
-              <p class="font-medium text-red-500 text-[13px]">-9%</p>
-              <p class="text-yellow-500 text-sm">⭐ 5</p>
-            </div>
-          </div>
-          <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
-            01.10.2025
-          </button>
-        </div>
-        <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
-          <img class="w-24 h-24 object-contain mx-auto mt-3" src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
-          <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
-            Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
-          </h4>
-          <div class="flex justify-between items-center mt-3">
-            <div>
-              <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
-              <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
-            </div>
-            <div class="text-right">
-              <p class="font-medium text-red-500 text-[13px]">-9%</p>
-              <p class="text-yellow-500 text-sm">⭐ 5</p>
-            </div>
-          </div>
-          <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
-            01.10.2025
-          </button>
-        </div>
-        <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
-          <img class="w-24 h-24 object-contain mx-auto mt-3" src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
-          <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
-            Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
-          </h4>
-          <div class="flex justify-between items-center mt-3">
-            <div>
-              <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
-              <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
-            </div>
-            <div class="text-right">
-              <p class="font-medium text-red-500 text-[13px]">-9%</p>
-              <p class="text-yellow-500 text-sm">⭐ 5</p>
-            </div>
-          </div>
-          <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
-            01.10.2025
-          </button>
-        </div>
-        <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
-          <img class="w-24 h-24 object-contain mx-auto mt-3" src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
-          <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
-            Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
-          </h4>
-          <div class="flex justify-between items-center mt-3">
-            <div>
-              <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
-              <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
-            </div>
-            <div class="text-right">
-              <p class="font-medium text-red-500 text-[13px]">-9%</p>
-              <p class="text-yellow-500 text-sm">⭐ 5</p>
-            </div>
-          </div>
-          <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
-            01.10.2025
-          </button>
-        </div>
-        <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
-          <img class="w-24 h-24 object-contain mx-auto mt-3" src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
-          <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
-            Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
-          </h4>
-          <div class="flex justify-between items-center mt-3">
-            <div>
-              <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
-              <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
-            </div>
-            <div class="text-right">
-              <p class="font-medium text-red-500 text-[13px]">-9%</p>
-              <p class="text-yellow-500 text-sm">⭐ 5</p>
-            </div>
-          </div>
-          <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
-            01.10.2025
-          </button>
-        </div>
-        <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
-          <img class="w-24 h-24 object-contain mx-auto mt-3" src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
-          <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
-            Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
-          </h4>
-          <div class="flex justify-between items-center mt-3">
-            <div>
-              <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
-              <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
-            </div>
-            <div class="text-right">
-              <p class="font-medium text-red-500 text-[13px]">-9%</p>
-              <p class="text-yellow-500 text-sm">⭐ 5</p>
-            </div>
-          </div>
-          <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
-            01.10.2025
-          </button>
-        </div>
+        <div class="flex gap-5 overflow-x-auto scrollbar-hide">
 
+          <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
+            <img class="w-24 h-24 object-contain mx-auto mt-3"
+              src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
+
+            <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
+              Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
+            </h4>
+
+            <div class="flex justify-between items-center mt-3">
+              <div>
+                <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
+                <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
+              </div>
+              <div class="text-right">
+                <p class="font-medium text-red-500 text-[13px]">-9%</p>
+                <p class="text-yellow-500 text-sm">⭐ 5</p>
+              </div>
+            </div>
+
+            <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
+              01.10.2025
+            </button>
+          </div>
+
+          <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
+            <img class="w-24 h-24 object-contain mx-auto mt-3"
+              src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
+            <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
+              Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
+            </h4>
+            <div class="flex justify-between items-center mt-3">
+              <div>
+                <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
+                <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
+              </div>
+              <div class="text-right">
+                <p class="font-medium text-red-500 text-[13px]">-9%</p>
+                <p class="text-yellow-500 text-sm">⭐ 5</p>
+              </div>
+            </div>
+            <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
+              01.10.2025
+            </button>
+          </div>
+          <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
+            <img class="w-24 h-24 object-contain mx-auto mt-3"
+              src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
+            <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
+              Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
+            </h4>
+            <div class="flex justify-between items-center mt-3">
+              <div>
+                <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
+                <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
+              </div>
+              <div class="text-right">
+                <p class="font-medium text-red-500 text-[13px]">-9%</p>
+                <p class="text-yellow-500 text-sm">⭐ 5</p>
+              </div>
+            </div>
+            <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
+              01.10.2025
+            </button>
+          </div>
+          <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
+            <img class="w-24 h-24 object-contain mx-auto mt-3"
+              src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
+            <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
+              Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
+            </h4>
+            <div class="flex justify-between items-center mt-3">
+              <div>
+                <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
+                <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
+              </div>
+              <div class="text-right">
+                <p class="font-medium text-red-500 text-[13px]">-9%</p>
+                <p class="text-yellow-500 text-sm">⭐ 5</p>
+              </div>
+            </div>
+            <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
+              01.10.2025
+            </button>
+          </div>
+          <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
+            <img class="w-24 h-24 object-contain mx-auto mt-3"
+              src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
+            <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
+              Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
+            </h4>
+            <div class="flex justify-between items-center mt-3">
+              <div>
+                <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
+                <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
+              </div>
+              <div class="text-right">
+                <p class="font-medium text-red-500 text-[13px]">-9%</p>
+                <p class="text-yellow-500 text-sm">⭐ 5</p>
+              </div>
+            </div>
+            <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
+              01.10.2025
+            </button>
+          </div>
+          <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
+            <img class="w-24 h-24 object-contain mx-auto mt-3"
+              src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
+            <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
+              Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
+            </h4>
+            <div class="flex justify-between items-center mt-3">
+              <div>
+                <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
+                <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
+              </div>
+              <div class="text-right">
+                <p class="font-medium text-red-500 text-[13px]">-9%</p>
+                <p class="text-yellow-500 text-sm">⭐ 5</p>
+              </div>
+            </div>
+            <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
+              01.10.2025
+            </button>
+          </div>
+          <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
+            <img class="w-24 h-24 object-contain mx-auto mt-3"
+              src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
+            <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
+              Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
+            </h4>
+            <div class="flex justify-between items-center mt-3">
+              <div>
+                <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
+                <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
+              </div>
+              <div class="text-right">
+                <p class="font-medium text-red-500 text-[13px]">-9%</p>
+                <p class="text-yellow-500 text-sm">⭐ 5</p>
+              </div>
+            </div>
+            <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
+              01.10.2025
+            </button>
+          </div>
+          <div class="min-w-[210px] bg-white rounded-2xl flex flex-col p-3 shadow hover:shadow-lg transition">
+            <img class="w-24 h-24 object-contain mx-auto mt-3"
+              src="./assets/4e8a8e89be6e3f7f90c203a48c1732b32024092716401933369pDs2HtFOcP.webp" alt="">
+            <h4 class="text-[12px] font-bold mt-4 text-center leading-tight">
+              Смартфон Apple iPhone 16 128GB (1 SIM) Nanosim+esim Black
+            </h4>
+            <div class="flex justify-between items-center mt-3">
+              <div>
+                <p class="font-medium text-[12px] text-gray-500 line-through">100000</p>
+                <p class="font-medium text-[13px] text-blue-600 mt-1">900000</p>
+              </div>
+              <div class="text-right">
+                <p class="font-medium text-red-500 text-[13px]">-9%</p>
+                <p class="text-yellow-500 text-sm">⭐ 5</p>
+              </div>
+            </div>
+            <button class="mt-4 bg-blue-600 text-white text-sm rounded-md py-2 hover:bg-blue-700 transition">
+              01.10.2025
+            </button>
+          </div>
+
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<section class="max-w-7xl mx-auto px-4 mt-10 mb-10">
+  </section>
+  <section class="max-w-7xl mx-auto px-4 mt-10 mb-10">
     <div class="flex gap-5 overflow-x-auto scrollbar-hide ">
-        <img class="w-[318px] h[172px]" src="./assets/68b5b3340735e.png.webp" alt="">
-        <img class="w-[318px] h[172px]" src="./assets/689c2e78d9a7f.png.webp" alt="">
-        <img class="w-[318px] h[172px]" src="./assets/68277341b67e2.jpg.webp" alt="">
-        <img class="w-[318px] h[172px]" src="./assets/6815b2909343a.jpg.webp" alt="">
-        <img class="w-[318px] h[172px]" src="./assets/67dbf79715b3c.jpg.webp" alt="">
-        <img class="w-[318px] h[172px]" src="./assets/6761486ebf8b6.jpg.webp" alt="">
-        <img class="w-[318px] h[172px]" src="./assets/664c707014140.jpg.webp" alt="">
-        <img class="w-[318px] h[172px]" src="./assets/664c6f22a7d87.jpg.webp" alt="">
+      <img class="w-[318px] h[172px]" src="./assets/68b5b3340735e.png.webp" alt="">
+      <img class="w-[318px] h[172px]" src="./assets/689c2e78d9a7f.png.webp" alt="">
+      <img class="w-[318px] h[172px]" src="./assets/68277341b67e2.jpg.webp" alt="">
+      <img class="w-[318px] h[172px]" src="./assets/6815b2909343a.jpg.webp" alt="">
+      <img class="w-[318px] h[172px]" src="./assets/67dbf79715b3c.jpg.webp" alt="">
+      <img class="w-[318px] h[172px]" src="./assets/6761486ebf8b6.jpg.webp" alt="">
+      <img class="w-[318px] h[172px]" src="./assets/664c707014140.jpg.webp" alt="">
+      <img class="w-[318px] h[172px]" src="./assets/664c6f22a7d87.jpg.webp" alt="">
     </div>
-</section>
-<section class="max-w-7xl mx-auto px-4">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-2xl font-bold">Телефоны и гаджеты</h2>
-      <a href="#" class="text-blue-600 text-sm hover:underline">Все товары</a>
+  </section>
+  <section class="max-w-7xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold">Телефоны и гаджеты</h2>
+        <a href="#" class="text-blue-600 text-sm hover:underline">Все товары</a>
+      </div>
+
+      <div class="flex gap-5 overflow-x-auto scrollbar-hide products-wrapper"></div>
     </div>
+  </section>
+  <section class="py-10 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-6">
 
-    <div class="flex gap-5 overflow-x-auto scrollbar-hide">
-      <div class="min-w-[240px] bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative">
-        <span class="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
-          СУПЕР ЦЕНА
-        </span>
-        <div class="absolute top-3 right-3 flex flex-col gap-2">
-          <button class="bg-white hover:bg-gray-100">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-          <button class="bg-white p-1  hover:bg-gray-100">
-            <img src="https://asaxiy.uz/custom-assets/images/icons/header/compare_header.svg" alt="">
-          </button>
-        </div>
-        <img src="./assets/f27cc8a6a8e6c3610a6fcd962b988c242024092116090556346x2iHm0FkhC.webp"
-             alt=""
-             class="w-32 h-32 object-contain mx-auto mt-6">
+      <div
+        class="bg-gradient-to-r from-blue-600 to-blue-400 rounded-2xl p-6 text-white flex items-center relative overflow-hidden">
+        <div class="flex-1 z-10">
+          <div class="flex items-center gap-2 mb-3">
+            <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="" class="h-6">
+          </div>
 
-        <h3 class="text-[13px] font-medium mt-4 leading-snug">
-          Смартфон HONOR X6 8/128GB Полночный черный
-        </h3>
-        <div class="flex items-center text-yellow-500 text-sm mt-2">
-          ⭐⭐⭐⭐⭐
-          <span class="text-gray-500 text-xs ml-2">10 отзывов</span>
-        </div>
-        <div class="mt-2">
-          <p class="text-gray-400 text-sm line-through">1 749 000 сум</p>
-          <p class="text-blue-600 text-lg font-bold">1 619 000 сум</p>
-          <p class="text-orange-500 text-sm font-medium border p-1">197 000 сум x 12 мес</p>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
-            Купить в один клик
-          </button>
-          <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition">
-            🛒
-          </button>
-        </div>
-      </div>
-      <div class="min-w-[240px] bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative">
-        <span class="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
-          СУПЕР ЦЕНА
-        </span>
-        <div class="absolute top-3 right-3 flex flex-col gap-2">
-          <button class="bg-white hover:bg-gray-100">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-          <button class="bg-white p-1  hover:bg-gray-100">
-            <img src="https://asaxiy.uz/custom-assets/images/icons/header/compare_header.svg" alt="">
-          </button>
-        </div>
-        <img src="./assets/f27cc8a6a8e6c3610a6fcd962b988c242024092116090556346x2iHm0FkhC.webp"
-             alt=""
-             class="w-32 h-32 object-contain mx-auto mt-6">
-
-        <h3 class="text-[13px] font-medium mt-4 leading-snug">
-          Смартфон HONOR X6 8/128GB Полночный черный
-        </h3>
-        <div class="flex items-center text-yellow-500 text-sm mt-2">
-          ⭐⭐⭐⭐⭐
-          <span class="text-gray-500 text-xs ml-2">10 отзывов</span>
-        </div>
-        <div class="mt-2">
-          <p class="text-gray-400 text-sm line-through">1 749 000 сум</p>
-          <p class="text-blue-600 text-lg font-bold">1 619 000 сум</p>
-          <p class="text-orange-500 text-sm font-medium border p-1">197 000 сум x 12 мес</p>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
-            Купить в один клик
-          </button>
-          <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition">
-            🛒
-          </button>
-        </div>
-      </div>
-      <div class="min-w-[240px] bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative">
-        <span class="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
-          СУПЕР ЦЕНА
-        </span>
-        <div class="absolute top-3 right-3 flex flex-col gap-2">
-          <button class="bg-white hover:bg-gray-100">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-          <button class="bg-white p-1  hover:bg-gray-100">
-            <img src="https://asaxiy.uz/custom-assets/images/icons/header/compare_header.svg" alt="">
-          </button>
-        </div>
-        <img src="./assets/f27cc8a6a8e6c3610a6fcd962b988c242024092116090556346x2iHm0FkhC.webp"
-             alt=""
-             class="w-32 h-32 object-contain mx-auto mt-6">
-
-        <h3 class="text-[13px] font-medium mt-4 leading-snug">
-          Смартфон HONOR X6 8/128GB Полночный черный
-        </h3>
-        <div class="flex items-center text-yellow-500 text-sm mt-2">
-          ⭐⭐⭐⭐⭐
-          <span class="text-gray-500 text-xs ml-2">10 отзывов</span>
-        </div>
-        <div class="mt-2">
-          <p class="text-gray-400 text-sm line-through">1 749 000 сум</p>
-          <p class="text-blue-600 text-lg font-bold">1 619 000 сум</p>
-          <p class="text-orange-500 text-sm font-medium border p-1">197 000 сум x 12 мес</p>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
-            Купить в один клик
-          </button>
-          <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition">
-            🛒
-          </button>
-        </div>
-      </div>
-      <div class="min-w-[240px] bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative">
-        <span class="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
-          СУПЕР ЦЕНА
-        </span>
-        <div class="absolute top-3 right-3 flex flex-col gap-2">
-          <button class="bg-white hover:bg-gray-100">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-          <button class="bg-white p-1  hover:bg-gray-100">
-            <img src="https://asaxiy.uz/custom-assets/images/icons/header/compare_header.svg" alt="">
-          </button>
-        </div>
-        <img src="./assets/f27cc8a6a8e6c3610a6fcd962b988c242024092116090556346x2iHm0FkhC.webp"
-             alt=""
-             class="w-32 h-32 object-contain mx-auto mt-6">
-
-        <h3 class="text-[13px] font-medium mt-4 leading-snug">
-          Смартфон HONOR X6 8/128GB Полночный черный
-        </h3>
-        <div class="flex items-center text-yellow-500 text-sm mt-2">
-          ⭐⭐⭐⭐⭐
-          <span class="text-gray-500 text-xs ml-2">10 отзывов</span>
-        </div>
-        <div class="mt-2">
-          <p class="text-gray-400 text-sm line-through">1 749 000 сум</p>
-          <p class="text-blue-600 text-lg font-bold">1 619 000 сум</p>
-          <p class="text-orange-500 text-sm font-medium border p-1">197 000 сум x 12 мес</p>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
-            Купить в один клик
-          </button>
-          <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition">
-            🛒
-          </button>
-        </div>
-      </div>
-      <div class="min-w-[240px] bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative">
-        <span class="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
-          СУПЕР ЦЕНА
-        </span>
-        <div class="absolute top-3 right-3 flex flex-col gap-2">
-          <button class="bg-white hover:bg-gray-100">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-          <button class="bg-white p-1  hover:bg-gray-100">
-            <img src="https://asaxiy.uz/custom-assets/images/icons/header/compare_header.svg" alt="">
-          </button>
-        </div>
-        <img src="./assets/f27cc8a6a8e6c3610a6fcd962b988c242024092116090556346x2iHm0FkhC.webp"
-             alt=""
-             class="w-32 h-32 object-contain mx-auto mt-6">
-
-        <h3 class="text-[13px] font-medium mt-4 leading-snug">
-          Смартфон HONOR X6 8/128GB Полночный черный
-        </h3>
-        <div class="flex items-center text-yellow-500 text-sm mt-2">
-          ⭐⭐⭐⭐⭐
-          <span class="text-gray-500 text-xs ml-2">10 отзывов</span>
-        </div>
-        <div class="mt-2">
-          <p class="text-gray-400 text-sm line-through">1 749 000 сум</p>
-          <p class="text-blue-600 text-lg font-bold">1 619 000 сум</p>
-          <p class="text-orange-500 text-sm font-medium border p-1">197 000 сум x 12 мес</p>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
-            Купить в один клик
-          </button>
-          <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition">
-            🛒
-          </button>
-        </div>
-      </div>
-      <div class="min-w-[240px] bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative">
-        <span class="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
-          СУПЕР ЦЕНА
-        </span>
-        <div class="absolute top-3 right-3 flex flex-col gap-2">
-          <button class="bg-white hover:bg-gray-100">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-          <button class="bg-white p-1  hover:bg-gray-100">
-            <img src="https://asaxiy.uz/custom-assets/images/icons/header/compare_header.svg" alt="">
-          </button>
-        </div>
-        <img src="./assets/f27cc8a6a8e6c3610a6fcd962b988c242024092116090556346x2iHm0FkhC.webp"
-             alt=""
-             class="w-32 h-32 object-contain mx-auto mt-6">
-
-        <h3 class="text-[13px] font-medium mt-4 leading-snug">
-          Смартфон HONOR X6 8/128GB Полночный черный
-        </h3>
-        <div class="flex items-center text-yellow-500 text-sm mt-2">
-          ⭐⭐⭐⭐⭐
-          <span class="text-gray-500 text-xs ml-2">10 отзывов</span>
-        </div>
-        <div class="mt-2">
-          <p class="text-gray-400 text-sm line-through">1 749 000 сум</p>
-          <p class="text-blue-600 text-lg font-bold">1 619 000 сум</p>
-          <p class="text-orange-500 text-sm font-medium border p-1">197 000 сум x 12 мес</p>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
-            Купить в один клик
-          </button>
-          <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition">
-            🛒
-          </button>
-        </div>
-      </div>
-      <div class="min-w-[240px] bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative">
-        <span class="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
-          СУПЕР ЦЕНА
-        </span>
-        <div class="absolute top-3 right-3 flex flex-col gap-2">
-          <button class="bg-white hover:bg-gray-100">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-          <button class="bg-white p-1  hover:bg-gray-100">
-            <img src="https://asaxiy.uz/custom-assets/images/icons/header/compare_header.svg" alt="">
-          </button>
-        </div>
-        <img src="./assets/f27cc8a6a8e6c3610a6fcd962b988c242024092116090556346x2iHm0FkhC.webp"
-             alt=""
-             class="w-32 h-32 object-contain mx-auto mt-6">
-
-        <h3 class="text-[13px] font-medium mt-4 leading-snug">
-          Смартфон HONOR X6 8/128GB Полночный черный
-        </h3>
-        <div class="flex items-center text-yellow-500 text-sm mt-2">
-          ⭐⭐⭐⭐⭐
-          <span class="text-gray-500 text-xs ml-2">10 отзывов</span>
-        </div>
-        <div class="mt-2">
-          <p class="text-gray-400 text-sm line-through">1 749 000 сум</p>
-          <p class="text-blue-600 text-lg font-bold">1 619 000 сум</p>
-          <p class="text-orange-500 text-sm font-medium border p-1">197 000 сум x 12 мес</p>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
-            Купить в один клик
-          </button>
-          <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition">
-            🛒
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<section class="py-10 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-6">
-
-    <div class="bg-gradient-to-r from-blue-600 to-blue-400 rounded-2xl p-6 text-white flex items-center relative overflow-hidden">
-      <div class="flex-1 z-10">
-        <div class="flex items-center gap-2 mb-3">
-          <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="" class="h-6">
-        </div>
-
-        <p class="text-lg font-semibold leading-snug text-black">
-          Сканируйте QR-код и скачивайте приложение и совершайте покупки быстро и удобно
-        </p>
-        <div class="flex items-center mr-24 flex-col  gap-4 mt-4">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://asaxiy.uz" alt="" class="w-20 h-20 bg-white p-1 rounded-lg">
-          <div class="flex gap-2">
-            <img src="https://asaxiy.uz/custom-assets/images/app-store.svg" alt="" class="h-6">
-            <img src="https://asaxiy.uz/custom-assets/images/google-play.svg" alt="" class="h-6">
-            <img src="https://asaxiy.uz/custom-assets/images/app-gallery.svg" alt="" class="h-6">
+          <p class="text-lg font-semibold leading-snug text-black">
+            Сканируйте QR-код и скачивайте приложение и совершайте покупки быстро и удобно
+          </p>
+          <div class="flex items-center mr-24 flex-col  gap-4 mt-4">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://asaxiy.uz" alt=""
+              class="w-20 h-20 bg-white p-1 rounded-lg">
+            <div class="flex gap-2">
+              <img src="https://asaxiy.uz/custom-assets/images/app-store.svg" alt="" class="h-6">
+              <img src="https://asaxiy.uz/custom-assets/images/google-play.svg" alt="" class="h-6">
+              <img src="https://asaxiy.uz/custom-assets/images/app-gallery.svg" alt="" class="h-6">
+            </div>
           </div>
         </div>
+        <img src="https://asaxiy.uz/custom-assets/images/banners/asaxiy-apps.png" alt=""
+          class="absolute right-2 bottom-0 w-40 md:w-48 z-0">
       </div>
-      <img src="https://asaxiy.uz/custom-assets/images/banners/asaxiy-apps.png"
-           alt=""
-           class="absolute right-2 bottom-0 w-40 md:w-48 z-0">
-    </div>
 
-    <div class="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-6 text-white flex items-center relative overflow-hidden">
-      <div class="flex-1 z-10">
-        <div class="flex items-center gap-2 mb-3">
-          <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="" class="h-6">
-        </div>
+      <div
+        class="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-6 text-white flex items-center relative overflow-hidden">
+        <div class="flex-1 z-10">
+          <div class="flex items-center gap-2 mb-3">
+            <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="" class="h-6">
+          </div>
 
-        <p class="text-lg font-semibold leading-snug text-black">
-          Скачайте приложение Asaxiy Books и покупайте книги легко и быстро.
-        </p>
+          <p class="text-lg font-semibold leading-snug text-black">
+            Скачайте приложение Asaxiy Books и покупайте книги легко и быстро.
+          </p>
 
-        <div class="flex items-center flex-col mr-24 gap-4 mt-4">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://asaxiy.uz/books" alt="" class="w-20 h-20 bg-white p-1 rounded-lg">
-          <div class="flex gap-2">
-            <img src="https://asaxiy.uz/custom-assets/images/app-store.svg" alt="" class="h-6">
-            <img src="https://asaxiy.uz/custom-assets/images/google-play.svg" alt="" class="h-6">
-            <img src="https://asaxiy.uz/custom-assets/images/app-gallery.svg" alt="" class="h-6">
+          <div class="flex items-center flex-col mr-24 gap-4 mt-4">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://asaxiy.uz/books" alt=""
+              class="w-20 h-20 bg-white p-1 rounded-lg">
+            <div class="flex gap-2">
+              <img src="https://asaxiy.uz/custom-assets/images/app-store.svg" alt="" class="h-6">
+              <img src="https://asaxiy.uz/custom-assets/images/google-play.svg" alt="" class="h-6">
+              <img src="https://asaxiy.uz/custom-assets/images/app-gallery.svg" alt="" class="h-6">
+            </div>
           </div>
         </div>
+
+        <img src="https://asaxiy.uz/custom-assets/images/banners/asaxiy-apps.png" alt=""
+          class="absolute right-2 bottom-0 w-40 md:w-48 z-0">
       </div>
 
-      <img src="https://asaxiy.uz/custom-assets/images/banners/asaxiy-apps.png"
-           alt=""
-           class="absolute right-2 bottom-0 w-40 md:w-48 z-0">
     </div>
+  </section>
+  <section class="max-w-7xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold">Телефоны и гаджеты</h2>
+        <a href="#" class="text-blue-600 text-sm hover:underline">Все товары</a>
+      </div>
 
-  </div>
-</section>
-
-
-
-
-
-
+      <!-- Products wrapper -->
+      <div class="flex gap-5 overflow-x-auto scrollbar-hide products-wrapper"></div>
+    </div>
+  </section>
   <footer class="border-t bg-white mt-12">
     <div class="max-w-7xl mx-auto px-4 py-10">
       <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
@@ -641,7 +403,8 @@
               <img src="https://asaxiy.uz/custom-assets/images/icons/store.svg" alt=""> Наши магазины
             </a>
             <a href="#" class="flex items-center gap-2 p-2 rounded-lg bg-gray-50 text-sm">
-              <img class="w-5" src="https://asaxiy.uz/custom-assets/images/icons/delivery-point.svg" alt=""> Пункты выдачи
+              <img class="w-5" src="https://asaxiy.uz/custom-assets/images/icons/delivery-point.svg" alt=""> Пункты
+              выдачи
             </a>
             <a href="#" class="flex items-center gap-2 p-2 rounded-lg bg-gray-50 text-sm">
               <img class="w-5" src="https://asaxiy.uz/custom-assets/images/icons/delivery-footer.svg" alt=""> Доставка
@@ -680,12 +443,13 @@
       </div>
 
       <div class="border-t mt-6 pt-4 text-center text-sm text-gray-500">
-        2015 – 2025 Интернет-магазин asaxiy.uz: Бытовая техника и др. 
+        2015 – 2025 Интернет-магазин asaxiy.uz: Бытовая техника и др.
         Доставка товаров осуществляется во все регионы. Все права защищены.
       </div>
     </div>
   </footer>
 
-
+  <script src="./scripts/main.js"></script>
 </body>
+
 </html>

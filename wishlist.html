@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="">
+    <header class="border-b border-amber-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-3">
+
+      <div class="flex items-center gap-3">
+        <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="Logo" class="h-8">
+        
+        <button class="flex items-center gap-2 bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <span>Kategoriyalar</span>
+        </button>
+      </div>
+
+      <div class="flex-1 mx-6">
+        <div class="flex border rounded-md overflow-hidden">
+          <input type="text" placeholder="Поиск..." class="w-full px-3 py-2 outline-none">
+          <button class="bg-blue-600 text-white px-4 hover:bg-blue-700 transition">Искать</button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6 text-gray-700">
+        <div class="flex flex-col items-center text-sm cursor-pointer">
+          <span class="material-icons">compare_arrows</span>
+          <span>Сравнение</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer">
+          <span class="material-icons">credit_card</span>
+          <span>Оплатить</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer">
+          <span class="material-icons">local_shipping</span>
+          <span>Отследить</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer relative">
+          <span class="material-icons">shopping_cart</span>
+          <span>Корзина</span>
+          <span class="absolute -top-0 -right-0 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer relative wishlist-open">
+          <button class="material-icons border-hidden cursor-pointer" id="wishlist-btn">favorite</button>
+          <span>Избранное</span>
+          <span id="wishlist-count" class="absolute -top-1 -right-0 bg-blue-600 text-white text-xs rounded-full px-1">10</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer">
+          <span class="material-icons">language</span>
+          <span>O‘zbekcha</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer">
+          <span class="material-icons">person</span>
+          <span>Войти</span>
+        </div>
+      </div>
+    </div>
+    <nav class="bg-white border-t border-amber-100">
+      <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 text-gray-700 text-sm py-2 overflow-x-auto">
+        <a href="#" class="hover:text-blue-600">Супер цена</a>
+        <a href="#" class="hover:text-blue-600">0-0-6</a>
+        <a href="#" class="hover:text-blue-600">Лучшее для студентов</a>
+        <a href="#" class="hover:text-blue-600">Смартфоны</a>
+        <a href="#" class="hover:text-blue-600">Бытовая техника</a>
+        <a href="#" class="hover:text-blue-600">Книги</a>
+        <a href="#" class="hover:text-blue-600">Телевизоры</a>
+        <a href="#" class="hover:text-blue-600">Ноутбуки</a>
+      </div>
+    </nav>
+  </header>
+    <section class="min-h-screen max-w-7xl mx-auto flex flex-col items-center py-10">
+    <div class="wishlist-wrapper grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 w-full"></div>
+</section>
+
+
+
+    <footer class="border-t bg-white mt-12">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+
+        <div>
+          <h3 class="font-semibold mb-4">Об Asaxiy</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Карьера в Asaxiy</a></li>
+            <li><a href="#">Лицензии и сертификаты</a></li>
+            <li><a href="#">Политика Asaxiy</a></li>
+            <li><a href="#">Контакты</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-4">Покупателям</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#">Часто задаваемые вопросы</a></li>
+            <li><a href="#">Статус «El-yurt ishonchi»</a></li>
+            <li><a href="#">«Asaxiy Plus»</a></li>
+            <li><a href="#">Договор публичной оферты</a></li>
+            <li><a href="#">Оферта для рассрочки</a></li>
+            <li><a href="#">Публичная оферта</a></li>
+            <li><a href="#">Публичная оферта для онлайн-курсов</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-4">Информации</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#">Наши бренды</a></li>
+            <li><a href="#">Новости</a></li>
+            <li><a href="#">Блог</a></li>
+            <li><a href="#">Карта сайта</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-4">Доставка и магазины</h3>
+          <div class="space-y-3">
+            <a href="#" class="flex items-center gap-2 p-2 rounded-l bg-gray-50 text-sm">
+              <img src="https://asaxiy.uz/custom-assets/images/icons/store.svg" alt=""> Наши магазины
+            </a>
+            <a href="#" class="flex items-center gap-2 p-2 rounded-lg bg-gray-50 text-sm">
+              <img class="w-5" src="https://asaxiy.uz/custom-assets/images/icons/delivery-point.svg" alt=""> Пункты выдачи
+            </a>
+            <a href="#" class="flex items-center gap-2 p-2 rounded-lg bg-gray-50 text-sm">
+              <img class="w-5" src="https://asaxiy.uz/custom-assets/images/icons/delivery-footer.svg" alt=""> Доставка
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-4">Для связи</h3>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2">📞 +998 71 200 01 05</li>
+            <li class="flex items-center gap-2">✉️ info@asaxiy.uz</li>
+            <li class="flex items-center gap-2">💬 Telegram bot</li>
+            <li class="flex items-center gap-2">📍 улица Гавхар 124, Ташкент</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 mt-10">
+        <img src="https://asaxiy.uz/custom-assets/images/uzum.svg" class="h-8" alt="uzum">
+        <img src="https://asaxiy.uz/custom-assets/images/payme.svg" class="h-8" alt="payme">
+        <img src="https://asaxiy.uz/custom-assets/images/humo.svg" class="h-8" alt="uzcard">
+        <img src="https://asaxiy.uz/custom-assets/images/uzcard.svg" class="h-8" alt="humo">
+        <img src="https://asaxiy.uz/custom-assets/images/xazna.png" class="h-8" alt="xazna">
+        <img src="https://assets.asaxiy.uz/uploads/payments/click-2-new.png" class="h-8" alt="click">
+      </div>
+
+      <div class="mt-6 flex items-center gap-4">
+        <span class="font-semibold">Мы в соц. сетях</span>
+        <a href="#">🌐</a>
+        <a href="#">📘</a>
+        <a href="#">▶️</a>
+        <a href="#">📸</a>
+        <a href="#">🐦</a>
+        <a href="#">🔗</a>
+      </div>
+
+      <div class="border-t mt-6 pt-4 text-center text-sm text-gray-500">
+        2015 – 2025 Интернет-магазин asaxiy.uz: Бытовая техника и др. 
+        Доставка товаров осуществляется во все регионы. Все права защищены.
+      </div>
+    </div>
+  </footer>
+  <script src="./scripts/main.js"></script>
+</body>
+</html>
