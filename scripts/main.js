@@ -1,5 +1,7 @@
 const API = "https://68a5b0d72a3deed2960e7566.mockapi.io/todo/products";
 let products = [];
+let shop_cart = document.getElementById("shop_cart");
+let shop = JSON.parse(localStorage.getItem("shop")) || [];
 
 async function addUI() {
   try {
@@ -55,7 +57,7 @@ async function addUI() {
           <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
             Купить в один клик
           </button>
-          <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition cursor-pointer">
+          <button id=${element.id} class="shop bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition cursor-pointer">
             🛒
           </button>
         </div>
@@ -170,11 +172,54 @@ karzinkaBtn.addEventListener("click", function () {
   window.location.href = "./korzinka.html";
 });
 
+  let btns = document.querySelectorAll(".shop");
+  btns.forEach((value) => {
+    value.addEventListener("click", (e) => {
+      let product = data.find((item) => item.id === e.target.id);
+      if (shop.find((value) => value.id === e.target.id)) {
+        return;
+      }
+      shop = [...shop, product];
+      localStorage.setItem("shop", JSON.stringify(shop));
+    });
+  });
 
-function saveCart(cart) {
-  localStorage.setItem("cart", JSON.stringify(cart));
+  function addUiShop(data) {
+  data.forEach((value) => {
+    let div = document.createElement("div");
+    div.innerHTML = `
+                      <div class="flex  gap-5 md:flex-row">
+                        <div class="w-24 md:w-1/4 flex justify-center">
+                            <img src="https://cdn.asaxiy.uz/asaxiy-content/product/items/mobile/1f66ced8a1db64e171c1bbe421f6e2262025012412102427562KAUl99cZZK.webp" alt="Кондиционер TCL" class="h-40 object-contain">
+                        </div>
+                        <div class="w-full md:w-3/4 mt-4 md:mt-0 md:pl-4">
+                            <div class="flex justify-between">
+                                <h3 class="font-semibold text-lg">Кондиционер TCL CITY 18 Inverter</h3>
+                                <button class="text-gray-400 hover:text-red-500">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-2">TCL</p>
+                            
+                            <div class="flex items-center mt-4 gap-6">
+                                <span class="text-blue-600 font-bold text-lg">5 299 000 сум</span>
+                                <span class="ml-4 text-orange-500 text-sm font-medium border border-orange-200 px-2 py-1 rounded">
+                                    883 200 сум + 6 мес
+                                </span>
+                            </div>
+                            
+                            <div class="flex items-center mt-6">
+                                <div class="flex items-center border rounded-lg">
+                                    <button class="px-3 py-1 text-gray-600 hover:bg-gray-100">-</button>
+                                    <span class="px-4 py-1">2</span>
+                                    <button class="px-3 py-1 text-gray-600 hover:bg-gray-100">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+        `;
+    shop_cart.append(div);
+  });
 }
 
-function getCart() {
-  return JSON.parse(localStorage.getItem("cart")) || [];
-}
+addUiShop(shop);
