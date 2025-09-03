@@ -1,20 +1,18 @@
+// === Utility functions for working with localStorage ===
 
-let karzinkaBtn = document.getElementById("karzinka-btn");
-karzinkaBtn.addEventListener("click", function () {
-  window.location.href = "./korzinka.html";
-});
-
-function getCart(){
-    return JSON.parse(localStorage.getItem("cart")) || [];
+// Get cart array from localStorage (or empty array if none)
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
-function saveCart(cart){
+// Save cart array to localStorage
+function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-
-function updateCounter(){
-  const cart = getCart()
+// Update the cart count in navbar/icon
+function updateCartCount() {
+  const cart = getCart();
   const count = cart.reduce((total, item) => total + item.quantity, 0);
 
   const cartCountEl = document.querySelector(".cart-count");
@@ -23,7 +21,9 @@ function updateCounter(){
   }
 }
 
+// === Cart actions ===
 
+// Add product to cart (increase quantity if already exists)
 function addToCart(product) {
   let cart = getCart();
 
@@ -44,7 +44,7 @@ function addToCart(product) {
   updateCartCount();
 }
 
-
+// Remove product completely from cart by title
 function removeCartItem(title) {
   let cart = getCart();
   cart = cart.filter(item => item.title !== title);
@@ -53,13 +53,16 @@ function removeCartItem(title) {
   renderCartItems();
 }
 
-
+// Clear all cart items
 function clearCart() {
   localStorage.removeItem("cart");
   updateCartCount();
   renderCartItems();
 }
 
+// === Cart rendering ===
+
+// Render cart items on cart page
 function renderCartItems() {
   const cart = getCart();
   const container = document.querySelector(".shop-card");
@@ -94,6 +97,7 @@ function renderCartItems() {
     container.appendChild(div);
   });
 
+  // Attach remove event listeners
   document.querySelectorAll(".remove").forEach(btn => {
     btn.addEventListener("click", e => {
       const title = e.currentTarget.dataset.title;
@@ -102,10 +106,14 @@ function renderCartItems() {
   });
 }
 
+// === Initialize ===
+
+// Run when page loads
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
   renderCartItems();
 
+  // If "Add to Cart" buttons exist (on index.html)
   const addButtons = document.querySelectorAll(".add-to-cart");
   addButtons.forEach(btn => {
     btn.addEventListener("click", e => {
@@ -121,9 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // If "Clear Cart" button exists (on cart page)
   const clearBtn = document.querySelector(".clear-cart");
   if (clearBtn) {
     clearBtn.addEventListener("click", clearCart);
   }
 });
-
