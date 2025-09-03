@@ -178,3 +178,75 @@ function saveCart(cart) {
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
+
+
+async function addUI() {
+  try {
+    let res = await fetch(API);
+    products = await res.json();
+
+    // 1-section scroll
+    renderScroll(products.slice(0, 10));
+
+    // 2-section grid
+    renderGrid(products);
+
+  } catch (err) {
+    console.error("Xatolik:", err);
+  }
+}
+
+function renderScroll(items) {
+  const container = document.querySelector(".products-wrapper");
+  if (!container) return;
+  container.innerHTML = "";
+
+  items.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "min-w-[240px] bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative";
+
+    let stars = "";
+    for (let i = 1; i <= 5; i++) {
+      stars += i <= Math.round(p.rating)
+        ? `<i class="fa-solid fa-star" style="color: #FFD43B;"></i>`
+        : `<i class="fa-regular fa-star" style="color: #FFD43B;"></i>`;
+    }
+
+    card.innerHTML = `
+      <img src="${p.image}" alt="${p.title}" class="w-32 h-32 object-contain mx-auto mt-6">
+      <h3 class="text-[13px] font-medium mt-4 leading-snug">${p.title}</h3>
+      <p class="text-blue-600 text-lg font-bold">${p.price.toLocaleString()} сум</p>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function renderGrid(items) {
+  const container = document.querySelector(".products-grid");
+  if (!container) return;
+  container.innerHTML = "";
+
+  items.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative";
+
+    let stars = "";
+    for (let i = 1; i <= 5; i++) {
+      stars += i <= Math.round(p.rating)
+        ? `<i class="fa-solid fa-star" style="color: #FFD43B;"></i>`
+        : `<i class="fa-regular fa-star" style="color: #FFD43B;"></i>`;
+    }
+
+    card.innerHTML = `
+      <img src="${p.image}" alt="${p.title}" class="w-full h-40 object-contain mx-auto">
+      <h3 class="text-[13px] font-medium mt-4 leading-snug">${p.title}</h3>
+      <div class="flex items-center text-yellow-500 text-sm mt-2">${stars}</div>
+      <p class="text-blue-600 text-lg font-bold mt-2">${p.price.toLocaleString()} сум</p>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+addUI();
