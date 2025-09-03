@@ -1,7 +1,5 @@
 const API = "https://68a5b0d72a3deed2960e7566.mockapi.io/todo/products";
 let products = [];
-let shop_cart = document.getElementById("shop_cart");
-let shop = JSON.parse(localStorage.getItem("shop")) || [];
 
 async function addUI() {
   try {
@@ -57,7 +55,7 @@ async function addUI() {
           <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
             Купить в один клик
           </button>
-          <button id=${element.id} class="shop bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition cursor-pointer">
+          <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition cursor-pointer">
             🛒
           </button>
         </div>
@@ -166,3 +164,17 @@ let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 wishlistCount.textContent = wishlist.length;
 
 
+
+let karzinkaBtn = document.getElementById("karzinka-btn");
+karzinkaBtn.addEventListener("click", function () {
+  window.location.href = "./korzinka.html";
+});
+
+
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
