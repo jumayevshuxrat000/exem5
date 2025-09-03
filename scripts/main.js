@@ -3,6 +3,7 @@ let products = [];
 let shop_cart = document.getElementById("shop_cart");
 let shop = JSON.parse(localStorage.getItem("shop")) || [];
 
+// 🔹 Mahsulotlarni chizish
 async function addUI() {
   try {
     let res = await fetch(API);
@@ -57,24 +58,29 @@ async function addUI() {
           <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
             Купить в один клик
           </button>
-          <button id=${p.id} class="shop bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition cursor-pointer">
+          <button data-id="${p.id}" class="shop bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition cursor-pointer">
             🛒
           </button>
         </div>
       `;
 
       container.appendChild(card);
-      
-      let btns = document.querySelectorAll(".shop");
-      btns.forEach((value) => {
-        value.addEventListener("click", (e) => {
-          let product = products.find((item) => item.id === e.target.id);
-          if (shop.find((value) => value.id === e.target.id)) {
-            return;
-          }
-          shop = [...shop, product];
-          localStorage.setItem("shop", JSON.stringify(shop));
-        });
+    });
+
+    // 🛒 tugmalarini aktiv qilish
+    let btns = document.querySelectorAll(".shop");
+    btns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        let product = products.find(item => item.id === e.target.dataset.id);
+        if (!product) return;
+
+        if (shop.find(item => item.id === product.id)) {
+          return; // oldin qo‘shilgan bo‘lsa chiqib ketadi
+        }
+
+        shop.push(product);
+        localStorage.setItem("shop", JSON.stringify(shop));
+        console.log("Qo‘shildi:", product.title);
       });
     });
 
@@ -86,6 +92,7 @@ async function addUI() {
 
 addUI();
 
+// ❤️ Wishlist funksiyalari
 function saveWishlist(wishlist) {
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
 }
@@ -103,11 +110,11 @@ function likeButtons() {
 
       if (have) {
         wishlist = wishlist.filter(item => item.title !== title);
-        btn.querySelector("i").className = "fa-regular fa-heart"; // oq yurak
+        btn.querySelector("i").className = "fa-regular fa-heart";
         btn.querySelector("i").classList.remove("text-red-500");
       } else {
         wishlist.push(product);
-        btn.querySelector("i").className = "fa-solid fa-heart text-red-500"; // qizil yurak
+        btn.querySelector("i").className = "fa-solid fa-heart text-red-500";
       }
 
       saveWishlist(wishlist);
@@ -122,17 +129,16 @@ function renderWishlist() {
   const wishlist = getWishlist();
   container.innerHTML = "";
 
-    if (wishlist.length === 0) {
-      container.innerHTML = `
-        <div class="flex flex-col items-center justify-center text-center w-full py-10">
-          <img class="w-40 mx-auto" src="./assets/empty.png" alt="">
-          <h4 class="text-lg font-semibold mt-4">Нет любимых продуктов</h4>
-          <p class="text-gray-500 text-sm">Добавить с символом ❤️ на продукте</p>
-        </div>
-      `;
-      return;
-    }
-
+  if (wishlist.length === 0) {
+    container.innerHTML = `
+      <div class="flex flex-col items-center justify-center text-center w-full py-10">
+        <img class="w-40 mx-auto" src="./assets/empty.png" alt="">
+        <h4 class="text-lg font-semibold mt-4">Нет любимых продуктов</h4>
+        <p class="text-gray-500 text-sm">Добавить с символом ❤️ на продукте</p>
+      </div>
+    `;
+    return;
+  }
 
   wishlist.forEach(p => {
     const card = document.createElement("div");
@@ -165,60 +171,68 @@ function renderWishlist() {
   });
 }
 
+// 🔹 Wishlist tugmasi
 let wishlistBtn = document.getElementById("wishlist-btn");
-wishlistBtn.addEventListener("click", function () {
-  window.location.href = "./wishlist.html";
-});
+if (wishlistBtn) {
+  wishlistBtn.addEventListener("click", function () {
+    window.location.href = "./wishlist.html";
+  });
+}
 
 renderWishlist();
 
+// 🔹 Wishlist count
+let wishlistCount = document.getElementById("wishlist-count");
+if (wishlistCount) {
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  wishlistCount.textContent = wishlist.length;
+}
 
-let wishlistCount = document.getElementById("wishlist-count")
-let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-wishlistCount.textContent = wishlist.length;
-
-
-
+// 🔹 Korzinka tugmasi
 let karzinkaBtn = document.getElementById("karzinka-btn");
-karzinkaBtn.addEventListener("click", function () {
-  window.location.href = "./korzinka.html";
-});
+if (karzinkaBtn) {
+  karzinkaBtn.addEventListener("click", function () {
+    window.location.href = "./korzinka.html";
+  });
+}
 
+// 🔹 Korzinka sahifasi uchun
+function addUiShop(data) {
+  if (!shop_cart) return;
 
-  function addUiShop(data) {
   data.forEach((value) => {
     let div = document.createElement("div");
     div.innerHTML = `
-                      <div class="flex  gap-5 md:flex-row">
-                        <div class="w-24 md:w-1/4 flex justify-center">
-                            <img src="${value.image}" alt="Кондиционер TCL" class="h-40 object-contain">
-                        </div>
-                        <div class="w-full md:w-3/4 mt-4 md:mt-0 md:pl-4">
-                            <div class="flex justify-between">
-                                <h3 class="font-semibold text-lg">${value.title}</h3>
-                                <button class="text-gray-400 hover:text-red-500">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </div>
-                            <p class="text-gray-500 text-sm mb-2">TCL</p>
-                            
-                            <div class="flex items-center mt-4 gap-6">
-                                <span class="text-blue-600 font-bold text-lg">${value.price.toLocaleString()}  сум</span>
-                                <span class="ml-4 text-orange-500 text-sm font-medium border border-orange-200 px-2 py-1 rounded">
-                                    883 200 сум + 6 мес
-                                </span>
-                            </div>
-                            
-                            <div class="flex items-center mt-6">
-                                <div class="flex items-center border rounded-lg">
-                                    <button class="px-3 py-1 text-gray-600 hover:bg-gray-100">-</button>
-                                    <span class="px-4 py-1">2</span>
-                                    <button class="px-3 py-1 text-gray-600 hover:bg-gray-100">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-        `;
+      <div class="flex gap-5 md:flex-row">
+        <div class="w-24 md:w-1/4 flex justify-center">
+            <img src="${value.image}" alt="${value.title}" class="h-40 object-contain">
+        </div>
+        <div class="w-full md:w-3/4 mt-4 md:mt-0 md:pl-4">
+            <div class="flex justify-between">
+                <h3 class="font-semibold text-lg">${value.title}</h3>
+                <button class="text-gray-400 hover:text-red-500">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+            <p class="text-gray-500 text-sm mb-2">TCL</p>
+            
+            <div class="flex items-center mt-4 gap-6">
+                <span class="text-blue-600 font-bold text-lg">${value.price.toLocaleString()} сум</span>
+                <span class="ml-4 text-orange-500 text-sm font-medium border border-orange-200 px-2 py-1 rounded">
+                    883 200 сум + 6 мес
+                </span>
+            </div>
+            
+            <div class="flex items-center mt-6">
+                <div class="flex items-center border rounded-lg">
+                    <button class="px-3 py-1 text-gray-600 hover:bg-gray-100">-</button>
+                    <span class="px-4 py-1">2</span>
+                    <button class="px-3 py-1 text-gray-600 hover:bg-gray-100">+</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    `;
     shop_cart.append(div);
   });
 }
