@@ -1,7 +1,7 @@
 const API = "https://68a5b0d72a3deed2960e7566.mockapi.io/todo/products";
 let products = [];
 
-async function loadProducts() {
+async function addUI() {
   try {
     let res = await fetch(API);
     products = await res.json();
@@ -70,7 +70,7 @@ async function loadProducts() {
   }
 }
 
-loadProducts();
+addUI();
 
 function saveWishlist(wishlist) {
   localStorage.setItem("wishlist", JSON.stringify(wishlist));

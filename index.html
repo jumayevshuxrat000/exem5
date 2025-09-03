@@ -61,7 +61,7 @@
         <div class="flex flex-col items-center text-sm cursor-pointer relative">
           <span id="karzinka-btn" class="material-icons">shopping_cart</span>
           <span>Корзина</span>
-          <span class="absolute -top-0 -right-0 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
+          <span id="cart-count" class="absolute -top-0 -right-0 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
         </div>
         <div class="flex flex-col items-center text-sm cursor-pointer relative wishlist-open">
           <button class="material-icons border-hidden cursor-pointer" id="wishlist-btn">favorite</button>
@@ -353,9 +353,7 @@
         <h2 class="text-2xl font-bold">Телефоны и гаджеты</h2>
         <a href="#" class="text-blue-600 text-sm hover:underline">Все товары</a>
       </div>
-
-      <!-- Products wrapper -->
-      <div class="flex gap-5 overflow-x-auto scrollbar-hide products-wrapper"></div>
+      <div data-title="${p.title} class="product-cart flex gap-5 overflow-x-auto scrollbar-hide products-wrapper"></div>
     </div>
   </section>
   <footer class="border-t bg-white mt-12">
