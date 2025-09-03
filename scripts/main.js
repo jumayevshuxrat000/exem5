@@ -1,236 +1,188 @@
+// === API va LocalStorage asosiy sozlamalar ===
 const API = "https://68a5b0d72a3deed2960e7566.mockapi.io/todo/products";
 let products = [];
-let shop_cart = document.querySelector(".shop-card");
 let shop = JSON.parse(localStorage.getItem("shop")) || [];
 
-async function addUI() {
+// === Productlarni yuklash va sahifaga chiqarish ===
+async function loadProducts() {
   try {
     let res = await fetch(API);
     products = await res.json();
+
     const container = document.querySelector(".products-wrapper");
-    if (!container) return;
-    container.innerHTML = "";
-    products.forEach(p => {
-      const card = document.createElement("div");
-      card.className = "min-w-[240px] bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative";
-      let stars = "";
-      for (let i = 1; i <= 5; i++) {
-        stars += i <= Math.round(p.rating)
-          ? `<i class="fa-solid fa-star" style="color: #FFD43B;"></i>`
-          : `<i class="fa-regular fa-star" style="color: #FFD43B;"></i>`;
-      }
-      const wishlist = getWishlist();
-      const isLiked = wishlist.find(item => item.title === p.title);
-      card.innerHTML = `
-        ${p.discount ? `<span class="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">${p.discount}</span>` : ""}
-        <div class="absolute top-3 right-3 flex flex-col gap-2">
-          <button class="like-btn bg-white hover:bg-gray-100 p-1 rounded" data-title="${p.title}">
-            <i class="${isLiked ? "fa-solid" : "fa-regular"} fa-heart ${isLiked ? "text-red-500" : ""}"></i>
+    if (container) {
+      container.innerHTML = "";
+      products.forEach((p) => {
+        const card = document.createElement("div");
+        card.className = "product-card border rounded p-4 shadow";
+        card.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" class="w-full h-40 object-cover mb-3">
+          <h3 class="text-lg font-semibold">${p.name}</h3>
+          <p class="text-gray-700">${p.price} so'm</p>
+          <button class="add-to-cart bg-blue-600 text-white px-4 py-2 rounded mt-2" data-id="${p.id}">
+            Add to Cart
           </button>
-        </div>
-        <img src="${p.image}" alt="${p.title}" class="w-32 h-32 object-contain mx-auto mt-6">
-        <h3 class="text-[13px] font-medium mt-4 leading-snug">${p.title}</h3>
-        <div class="flex items-center text-yellow-500 text-sm mt-2">${stars}<span class="text-gray-500 text-xs ml-2">${p.reviews} отзывов</span></div>
-        <div class="mt-2">
-          ${p.old_price ? `<p class="text-gray-400 text-sm line-through">${p.old_price.toLocaleString()} сум</p>` : ""}
-          <p class="text-blue-600 text-lg font-bold">${p.price.toLocaleString()} сум</p>
-          ${p.installment ? `<p class="text-orange-500 text-sm font-medium border p-1">${p.installment}</p>` : ""}
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">Купить в один клик</button>
-          <button data-id="${p.id}" class="shop bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition cursor-pointer">🛒</button>
-        </div>
-      `;
-      container.appendChild(card);
-    });
-    document.querySelectorAll(".shop").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        let product = products.find(item => item.id === e.target.dataset.id);
-        if (!product) return;
-        let existing = shop.find(item => item.id === product.id);
-        if (existing) {
-          existing.quantity += 1;
-        } else {
-          product.quantity = 1;
-          shop.push(product);
-        }
-        saveCart(shop);
-        updateCartCount();
+        `;
+        container.appendChild(card);
       });
-    });
-    likeButtons();
+
+      // add-to-cart tugmalariga event ulash
+      document.querySelectorAll(".add-to-cart").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          let id = e.target.dataset.id;
+          addToCart(id);
+        });
+      });
+    }
+
+    renderCartItems();
+    updateCartCount();
   } catch (err) {
-    console.error(err);
+    console.error("API yuklashda xatolik:", err);
   }
 }
-addUI();
 
-function saveCart(cart) {
-  localStorage.setItem("shop", JSON.stringify(cart));
+// === LocalStorage bilan ishlash funksiyalari ===
+function saveCart() {
+  localStorage.setItem("shop", JSON.stringify(shop));
 }
+
 function getCart() {
   return JSON.parse(localStorage.getItem("shop")) || [];
 }
-function updateCartCount() {
-  let count = shop.reduce((sum, item) => sum + item.quantity, 0);
-  let cartCountEl = document.querySelector(".material-icons ~ span.absolute");
-  if (cartCountEl) cartCountEl.textContent = count;
+
+// === Savatga qo‘shish ===
+function addToCart(id) {
+  let item = shop.find((x) => x.id == id);
+  if (item) {
+    item.qty += 1;
+  } else {
+    let product = products.find((p) => p.id == id);
+    if (product) {
+      shop.push({ ...product, qty: 1 });
+    }
+  }
+  saveCart();
+  updateCartCount();
+  renderCartItems();
 }
-function renderCartItems() {
-  if (!shop_cart) return;
-  shop_cart.innerHTML = "";
-  shop.forEach((value) => {
-    let div = document.createElement("div");
-    div.className = "flex gap-5 md:flex-row mb-6 border-b pb-4";
-    div.innerHTML = `
-      <div class="w-24 md:w-1/4 flex justify-center">
-          <img src="${value.image}" alt="${value.title}" class="h-32 object-contain">
-      </div>
-      <div class="w-full md:w-3/4 mt-4 md:mt-0 md:pl-4">
-          <div class="flex justify-between">
-              <h3 class="font-semibold text-lg">${value.title}</h3>
-              <button class="remove-item text-gray-400 hover:text-red-500" data-id="${value.id}">
-                  <i class="fa-solid fa-trash"></i>
-              </button>
-          </div>
-          <div class="flex items-center mt-4 gap-6">
-              <span class="text-blue-600 font-bold text-lg">${value.price.toLocaleString()} сум</span>
-          </div>
-          <div class="flex items-center mt-6">
-              <div class="flex items-center border rounded-lg">
-                  <button class="decrease px-3 py-1 text-gray-600 hover:bg-gray-100" data-id="${value.id}">-</button>
-                  <span class="px-4 py-1">${value.quantity}</span>
-                  <button class="increase px-3 py-1 text-gray-600 hover:bg-gray-100" data-id="${value.id}">+</button>
-              </div>
-          </div>
-      </div>
-    `;
-    shop_cart.append(div);
-  });
-  document.querySelectorAll(".remove-item").forEach(btn => {
-    btn.addEventListener("click", () => {
-      removeCartItem(btn.dataset.id);
-    });
-  });
-  document.querySelectorAll(".increase").forEach(btn => {
-    btn.addEventListener("click", () => {
-      let item = shop.find(i => i.id === btn.dataset.id);
-      if (item) item.quantity++;
-      saveCart(shop);
-      renderCartItems();
-      updateCartCount();
-    });
-  });
-  document.querySelectorAll(".decrease").forEach(btn => {
-    btn.addEventListener("click", () => {
-      let item = shop.find(i => i.id === btn.dataset.id);
-      if (item && item.quantity > 1) {
-        item.quantity--;
-      } else {
-        shop = shop.filter(i => i.id !== btn.dataset.id);
-      }
-      saveCart(shop);
-      renderCartItems();
-      updateCartCount();
-    });
-  });
-}
+
+// === Savatdan o‘chirish ===
 function removeCartItem(id) {
-  shop = shop.filter(item => item.id !== id);
-  saveCart(shop);
+  shop = shop.filter((x) => x.id != id);
+  saveCart();
   renderCartItems();
   updateCartCount();
 }
+
+// === Miqdorni o‘zgartirish (+/-) ===
+function changeQty(id, delta) {
+  let item = shop.find((x) => x.id == id);
+  if (item) {
+    item.qty += delta;
+    if (item.qty <= 0) {
+      removeCartItem(id);
+    } else {
+      saveCart();
+      renderCartItems();
+      updateCartCount();
+    }
+  }
+}
+
+// === Savatni tozalash ===
 function clearCart() {
   shop = [];
-  saveCart(shop);
+  saveCart();
   renderCartItems();
   updateCartCount();
 }
 
-function saveWishlist(wishlist) {
-  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+// === Headerdagi umumiy sonni yangilash ===
+function updateCartCount() {
+  let count = shop.reduce((a, b) => a + b.qty, 0);
+  let el = document.querySelector(".cart-count");
+  if (el) el.textContent = count;
 }
-function getWishlist() {
-  return JSON.parse(localStorage.getItem("wishlist")) || [];
-}
-function likeButtons() {
-  document.querySelectorAll(".like-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      let wishlist = getWishlist();
-      let title = btn.dataset.title;
-      const product = products.find(p => p.title === title);
-      const have = wishlist.find(item => item.title === title);
-      if (have) {
-        wishlist = wishlist.filter(item => item.title !== title);
-        btn.querySelector("i").className = "fa-regular fa-heart";
-        btn.querySelector("i").classList.remove("text-red-500");
-      } else {
-        wishlist.push(product);
-        btn.querySelector("i").className = "fa-solid fa-heart text-red-500";
-      }
-      saveWishlist(wishlist);
+
+// === Korzinka sahifasida mahsulotlarni chiqarish ===
+function renderCartItems() {
+  const container = document.querySelector(".shop-card");
+  if (!container) return;
+
+  container.innerHTML = "";
+  let total = 0;
+
+  if (shop.length === 0) {
+    container.innerHTML = "<p class='text-gray-600'>Savat bo'sh</p>";
+    updateOrderSummary(0, 0);
+    return;
+  }
+
+  shop.forEach((item) => {
+    total += item.price * item.qty;
+
+    const div = document.createElement("div");
+    div.className = "cart-item flex items-center justify-between border-b py-3";
+    div.innerHTML = `
+      <div class="flex items-center gap-4">
+        <img src="${item.img}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+        <div>
+          <h4 class="font-semibold">${item.name}</h4>
+          <p class="text-gray-600">${item.price} so'm</p>
+          <div class="flex items-center gap-2 mt-2">
+            <button class="dec px-2 bg-gray-200 rounded" data-id="${item.id}">-</button>
+            <span>${item.qty}</span>
+            <button class="inc px-2 bg-gray-200 rounded" data-id="${item.id}">+</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="remove text-red-500" data-id="${item.id}">❌</button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+
+  updateOrderSummary(shop.length, total);
+
+  // tugmalar ishlashi
+  document.querySelectorAll(".inc").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      changeQty(e.target.dataset.id, 1);
+    });
+  });
+
+  document.querySelectorAll(".dec").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      changeQty(e.target.dataset.id, -1);
+    });
+  });
+
+  document.querySelectorAll(".remove").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      removeCartItem(e.target.dataset.id);
     });
   });
 }
-function renderWishlist() {
-  const container = document.querySelector(".wishlist-wrapper");
-  if (!container) return;
-  const wishlist = getWishlist();
-  container.innerHTML = "";
-  if (wishlist.length === 0) {
-    container.innerHTML = `
-      <div class="flex flex-col items-center justify-center text-center w-full py-10">
-        <img class="w-40 mx-auto" src="./assets/empty.png" alt="">
-        <h4 class="text-lg font-semibold mt-4">Нет любимых продуктов</h4>
-        <p class="text-gray-500 text-sm">Добавить с символом ❤️ на продукте</p>
-      </div>
-    `;
-    return;
-  }
-  wishlist.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "min-w-[240px] bg-white rounded-xl p-4 shadow hover:shadow-lg transition relative";
-    let stars = "";
-    for (let i = 1; i <= 5; i++) {
-      stars += i <= Math.round(p.rating)
-        ? `<i class="fa-solid fa-star" style="color: #FFD43B;"></i>`
-        : `<i class="fa-regular fa-star" style="color: #FFD43B;"></i>`;
-    }
-    card.innerHTML = `
-      <img src="${p.image}" alt="${p.title}" class="w-32 h-32 object-contain mx-auto mt-6">
-      <h3 class="text-[13px] font-medium mt-4 leading-snug">${p.title}</h3>
-      <div class="flex items-center text-yellow-500 text-sm mt-2">${stars}<span class="text-gray-500 text-xs ml-2">${p.reviews} отзывов</span></div>
-      <div class="mt-2">
-        ${p.old_price ? `<p class="text-gray-400 text-sm line-through">${p.old_price.toLocaleString()} сум</p>` : ""}
-        <p class="text-blue-600 text-lg font-bold">${p.price.toLocaleString()} сум</p>
-        ${p.installment ? `<p class="text-orange-500 text-sm font-medium border p-1">${p.installment}</p>` : ""}
-      </div>
-    `;
-    container.appendChild(card);
-  });
+
+// === O‘ng tarafdagi "Ваш заказ" bo‘limini yangilash ===
+function updateOrderSummary(count, total) {
+  const itemsText = document.querySelector(".order-items");
+  const totalText = document.querySelector(".order-total");
+  const discountText = document.querySelector(".order-discount");
+  const grandText = document.querySelector(".order-grand");
+
+  if (itemsText) itemsText.textContent = `В корзине ${count} товара`;
+  if (totalText) totalText.textContent = total + " сум";
+
+  let discount = total > 0 ? Math.floor(total * 0.1) : 0; // 10% chegirma
+  if (discountText) discountText.textContent = discount + " сум";
+
+  if (grandText) grandText.textContent = total - discount + " сум";
 }
 
-let wishlistBtn = document.getElementById("wishlist-btn");
-if (wishlistBtn) {
-  wishlistBtn.addEventListener("click", function () {
-    window.location.href = "./wishlist.html";
-  });
-}
-renderWishlist();
-
-let wishlistCount = document.getElementById("wishlist-count");
-if (wishlistCount) {
-  let wishlist = getWishlist();
-  wishlistCount.textContent = wishlist.length;
-}
-
-let karzinkaBtn = document.getElementById("karzinka-btn");
-if (karzinkaBtn) {
-  karzinkaBtn.addEventListener("click", function () {
-    window.location.href = "./korzinka.html";
-  });
-}
-
+// === Dastlabki yuklash ===
+loadProducts();
 renderCartItems();
 updateCartCount();
