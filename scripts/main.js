@@ -65,16 +65,16 @@ async function addUI() {
 
       container.appendChild(card);
       
-    });
-    let btns = document.querySelectorAll(".shop");
-    btns.forEach((value) => {
-      value.addEventListener("click", (e) => {
-        let product = products.find((item) => item.id === e.target.id);
-        if (shop.find((value) => value.id === e.target.id)) {
-          return;
-        }
-        shop = [...shop, product];
-        localStorage.setItem("shop", JSON.stringify(shop));
+      let btns = document.querySelectorAll(".shop");
+      btns.forEach((value) => {
+        value.addEventListener("click", (e) => {
+          let product = products.find((item) => item.id === e.target.id);
+          if (shop.find((value) => value.id === e.target.id)) {
+            return;
+          }
+          shop = [...shop, product];
+          localStorage.setItem("shop", JSON.stringify(shop));
+        });
       });
     });
 
