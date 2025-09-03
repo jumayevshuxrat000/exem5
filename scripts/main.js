@@ -55,7 +55,7 @@ async function addUI() {
           <button class="flex-1 bg-blue-600 text-white text-sm py-2 rounded-lg hover:bg-blue-700 transition">
             Купить в один клик
           </button>
-          <button class="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition cursor-pointer">
+          <button class="add-to-cart" bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition cursor-pointer">
             🛒
           </button>
         </div>
