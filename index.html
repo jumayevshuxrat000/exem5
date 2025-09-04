@@ -23,127 +23,130 @@
 </style>
 
 <body>
-  <header class="border-b border-amber-50 shadow-sm">
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asaxiy Header Responsive</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+
+  <!-- HEADER -->
+  <header class="border-b border-gray-200 shadow-sm bg-white">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-3">
 
+      <!-- Logo -->
       <div class="flex items-center gap-3">
         <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="Logo" class="h-8">
-
-        <button
-          class="flex items-center gap-2 bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700 transition">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <span>Kategoriyalar</span>
-        </button>
       </div>
 
-      <div class="flex-1 mx-6">
-        <div class="flex border rounded-md overflow-hidden">
+      <!-- Search (desktop only) -->
+      <div class="hidden md:flex flex-1 mx-6">
+        <div class="flex border rounded-md overflow-hidden w-full">
           <input type="text" placeholder="Поиск..." class="w-full px-3 py-2 outline-none">
           <button class="bg-blue-600 text-white px-4 hover:bg-blue-700 transition">Искать</button>
         </div>
       </div>
 
+      <!-- Icons -->
       <div class="flex items-center gap-6 text-gray-700">
-        <div class="flex flex-col items-center text-sm cursor-pointer">
+
+        <div class="hidden md:flex flex-col items-center text-sm cursor-pointer">
           <span class="material-icons">compare_arrows</span>
           <span>Сравнение</span>
         </div>
-        <div class="flex flex-col items-center text-sm cursor-pointer">
+
+        <div class="hidden md:flex flex-col items-center text-sm cursor-pointer">
           <span class="material-icons">credit_card</span>
           <span>Оплатить</span>
         </div>
-        <div class="flex flex-col items-center text-sm cursor-pointer">
+
+        <div class="hidden md:flex flex-col items-center text-sm cursor-pointer">
           <span class="material-icons">local_shipping</span>
           <span>Отследить</span>
         </div>
+
+        <!-- Cart -->
         <div class="flex flex-col items-center text-sm cursor-pointer relative">
-          <span id="karzinka-btn" class="material-icons">shopping_cart</span>
-          <span>Корзина</span>
-          <span id="cart-count" class="absolute -top-0 -right-0 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
+          <span class="material-icons">shopping_cart</span>
+          <span class="hidden md:block">Корзина</span>
+          <span id="cart-count" class="absolute -top-1 -right-2 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
         </div>
-        <div class="flex flex-col items-center text-sm cursor-pointer relative wishlist-open">
-          <button class="material-icons border-hidden cursor-pointer" id="wishlist-btn">favorite</button>
-          <span>Избранное</span>
-          <span id="wishlist-count"
-            class="absolute -top-1 -right-0 bg-blue-600 text-white text-xs rounded-full px-1">10</span>
+
+        <!-- Wishlist -->
+        <div class="flex flex-col items-center text-sm cursor-pointer relative">
+          <span class="material-icons">favorite</span>
+          <span class="hidden md:block">Избранное</span>
+          <span id="wishlist-count" class="absolute -top-1 -right-2 bg-blue-600 text-white text-xs rounded-full px-1">10</span>
         </div>
-        <div class="flex flex-col items-center text-sm cursor-pointer">
+
+        <div class="hidden md:flex flex-col items-center text-sm cursor-pointer">
           <span class="material-icons">language</span>
           <span>O‘zbekcha</span>
         </div>
-        <div class="flex flex-col items-center text-sm cursor-pointer">
+
+        <div class="hidden md:flex flex-col items-center text-sm cursor-pointer">
           <span class="material-icons">person</span>
           <span>Войти</span>
         </div>
       </div>
     </div>
-    <nav class="bg-white border-t border-amber-100">
-      <div
-        class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 text-gray-700 text-sm py-2 overflow-x-auto">
-        <a href="#" class="hover:text-blue-600">Супер цена</a>
-        <a href="#" class="hover:text-blue-600">0-0-6</a>
-        <a href="#" class="hover:text-blue-600">Лучшее для студентов</a>
-        <a href="#" class="hover:text-blue-600">Смартфоны</a>
-        <a href="#" class="hover:text-blue-600">Бытовая техника</a>
-        <a href="#" class="hover:text-blue-600">Книги</a>
-        <a href="#" class="hover:text-blue-600">Телевизоры</a>
-        <a href="#" class="hover:text-blue-600">Ноутбуки</a>
+
+    <!-- Search (mobile) -->
+    <div class="px-4 pb-2 md:hidden">
+      <div class="flex border rounded-md overflow-hidden w-full">
+        <input type="text" placeholder="Поиск..." class="w-full px-3 py-2 outline-none">
+        <button class="bg-blue-600 text-white px-4 hover:bg-blue-700 transition">Искать</button>
+      </div>
+    </div>
+
+    <!-- NAVBAR (desktop only) -->
+    <nav class="bg-white border-t border-gray-100 hidden md:block">
+      <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 text-gray-700 text-sm py-2 overflow-x-auto">
+        <a href="#" class="hover:text-blue-600 whitespace-nowrap">Супер цена</a>
+        <a href="#" class="hover:text-blue-600 whitespace-nowrap">0-0-6</a>
+        <a href="#" class="hover:text-blue-600 whitespace-nowrap">Лучшее для студентов</a>
+        <a href="#" class="hover:text-blue-600 whitespace-nowrap">Смартфоны</a>
+        <a href="#" class="hover:text-blue-600 whitespace-nowrap">Бытовая техника</a>
+        <a href="#" class="hover:text-blue-600 whitespace-nowrap">Книги</a>
+        <a href="#" class="hover:text-blue-600 whitespace-nowrap">Телевизоры</a>
+        <a href="#" class="hover:text-blue-600 whitespace-nowrap">Ноутбуки</a>
       </div>
     </nav>
   </header>
-  <header class="border-b border-amber-50 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-3">
 
-    <!-- Left: Hamburger menu -->
-    <button class="md:hidden flex items-center text-gray-700">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
-        viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-
-    <!-- Center: Logo -->
-    <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg"
-      alt="Logo" class="h-8 mx-auto">
-
-    <!-- Right: Language -->
-    <div class="flex items-center gap-1 cursor-pointer">
-      <span class="material-icons">language</span>
-      <span class="text-sm">O‘z</span>
+  <!-- MOBILE BOTTOM MENU -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-inner md:hidden">
+    <div class="flex justify-around text-gray-700 text-xs py-2">
+      <div class="flex flex-col items-center">
+        <span class="material-icons">home</span>
+        <span>Главная</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span class="material-icons">menu</span>
+        <span>Каталог</span>
+      </div>
+      <div class="flex flex-col items-center relative">
+        <span class="material-icons">shopping_cart</span>
+        <span>Корзина</span>
+        <span class="absolute -top-1 right-2 bg-blue-600 text-white text-[10px] rounded-full px-1">0</span>
+      </div>
+      <div class="flex flex-col items-center relative">
+        <span class="material-icons">favorite</span>
+        <span>Избранное</span>
+        <span class="absolute -top-1 right-2 bg-blue-600 text-white text-[10px] rounded-full px-1">10</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span class="material-icons">person</span>
+        <span>Кабинет</span>
+      </div>
     </div>
   </div>
-</header>
 
-<!-- Mobile Bottom Navbar -->
-<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-inner md:hidden">
-  <div class="flex justify-between px-4 py-2 text-gray-600 text-sm">
-    <div class="flex flex-col items-center">
-      <span class="material-icons">home</span>
-      <span>Главная</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <span class="material-icons">category</span>
-      <span>Каталог</span>
-    </div>
-    <div class="flex flex-col items-center relative">
-      <span class="material-icons">shopping_cart</span>
-      <span>Корзина</span>
-      <span class="absolute -top-1 -right-2 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <span class="material-icons">favorite</span>
-      <span>Избранное</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <span class="material-icons">person</span>
-      <span>Кабинет</span>
-    </div>
-  </div>
-</nav>
-
+  
   <section class="p-8">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-3xl p-5 font-bold">Супер цена</h2>
