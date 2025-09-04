@@ -12,12 +12,10 @@
       <header class="border-b border-gray-200 shadow-sm bg-white">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-3">
 
-      <!-- Logo -->
       <div class="flex items-center gap-3">
         <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="Logo" class="h-8">
       </div>
 
-      <!-- Search (desktop only) -->
       <div class="hidden md:flex flex-1 mx-6">
         <div class="flex border rounded-md overflow-hidden w-full">
           <input type="text" placeholder="Поиск..." class="w-full px-3 py-2 outline-none">
@@ -25,7 +23,6 @@
         </div>
       </div>
 
-      <!-- Icons -->
       <div class="flex items-center gap-6 text-gray-700">
 
         <div class="hidden md:flex flex-col items-center text-sm cursor-pointer">
@@ -43,14 +40,12 @@
           <span>Отследить</span>
         </div>
 
-        <!-- Cart -->
         <div class="flex flex-col items-center text-sm cursor-pointer relative">
           <span class="material-icons">shopping_cart</span>
           <span class="hidden md:block">Корзина</span>
           <span id="cart-count" class="absolute -top-1 -right-2 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
         </div>
 
-        <!-- Wishlist -->
         <div class="flex flex-col items-center text-sm cursor-pointer relative">
           <span class="material-icons">favorite</span>
           <span class="hidden md:block">Избранное</span>
@@ -69,7 +64,6 @@
       </div>
     </div>
 
-    <!-- Search (mobile) -->
     <div class="px-4 pb-2 md:hidden">
       <div class="flex border rounded-md overflow-hidden w-full">
         <input type="text" placeholder="Поиск..." class="w-full px-3 py-2 outline-none">
@@ -77,7 +71,6 @@
       </div>
     </div>
 
-    <!-- NAVBAR (desktop only) -->
     <nav class="bg-white border-t border-gray-100 hidden md:block">
       <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 text-gray-700 text-sm py-2 overflow-x-auto">
         <a href="#" class="hover:text-blue-600 whitespace-nowrap">Супер цена</a>
@@ -92,7 +85,6 @@
     </nav>
   </header>
 
-  <!-- MOBILE BOTTOM MENU -->
   <div class="fixed bottom-0 z-[9999] left-0 right-0 bg-white border-t border-gray-200 shadow-inner md:hidden">
     <div class="flex justify-around text-gray-700 text-xs py-2">
       <div class="flex flex-col items-center">
@@ -111,7 +103,7 @@
       <div class="flex flex-col items-center relative">
         <span class="material-icons">favorite</span>
         <span>Избранное</span>
-        <span class="absolute -top-1 right-2 bg-blue-600 text-white text-[10px] rounded-full px-1">10</span>
+        <span id="wishlist-count" class="absolute -top-1 right-2 bg-blue-600 text-white text-[10px] rounded-full px-1">10</span>
       </div>
       <div class="flex flex-col items-center">
         <span class="material-icons">person</span>
@@ -181,10 +173,10 @@
         <div>
           <h3 class="font-semibold mb-4">Для связи</h3>
           <ul class="space-y-2 text-sm">
-            <li class="flex items-center gap-2">📞 +998 71 200 01 05</li>
-            <li class="flex items-center gap-2">✉️ info@asaxiy.uz</li>
-            <li class="flex items-center gap-2">💬 Telegram bot</li>
-            <li class="flex items-center gap-2">📍 улица Гавхар 124, Ташкент</li>
+            <li class="flex items-center gap-2"> +998 71 200 01 05</li>
+            <li class="flex items-center gap-2"> info@asaxiy.uz</li>
+            <li class="flex items-center gap-2"> Telegram bot</li>
+            <li class="flex items-center gap-2"> улица Гавхар 124, Ташкент</li>
           </ul>
         </div>
       </div>
@@ -198,15 +190,6 @@
         <img src="https://assets.asaxiy.uz/uploads/payments/click-2-new.png" class="h-8" alt="click">
       </div>
 
-      <div class="mt-6 flex items-center gap-4">
-        <span class="font-semibold">Мы в соц. сетях</span>
-        <a href="#">🌐</a>
-        <a href="#">📘</a>
-        <a href="#">▶️</a>
-        <a href="#">📸</a>
-        <a href="#">🐦</a>
-        <a href="#">🔗</a>
-      </div>
 
       <div class="border-t mt-6 pt-4 text-center text-sm text-gray-500">
         2015 – 2025 Интернет-магазин asaxiy.uz: Бытовая техника и др. 
