@@ -23,78 +23,73 @@
 </style>
 
 <body>
+  <header class="border-b shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-3">
 
-<header class="border-b border-gray-200 shadow-sm bg-white">
-  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
-    
-    <div class="flex items-center flex-shrink-0">
-      <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="Logo" class="h-8">
-    </div>
-    <button class="hidden md:flex items-center gap-2 bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700 transition">
-      <span class="material-icons">menu</span>
-      <span>Категории</span>
-    </button>
+      <div class="flex items-center gap-3">
+        <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="Logo" class="h-8">
+        
+        <button class="flex items-center gap-2 bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <span>Kategoriyalar</span>
+        </button>
+      </div>
 
-    <div class="flex-1">
-      <div class="flex border-2 border-blue-500 rounded-md overflow-hidden w-full">
-        <input type="text" placeholder="Поиск..." class="w-full px-3 py-2 outline-none">
-        <button class="bg-blue-600 text-white px-4 hover:bg-blue-700 transition">Искать</button>
+      <div class="flex-1 mx-6">
+        <div class="flex border rounded-md overflow-hidden">
+          <input type="text" placeholder="Поиск..." class="w-full px-3 py-2 outline-none">
+          <button class="bg-blue-600 text-white px-4 hover:bg-blue-700 transition">Искать</button>
+        </div>
+      </div>
+      <div class="flex items-center gap-6 text-gray-700">
+        <div class="flex flex-col items-center text-sm cursor-pointer">
+          <span class="material-icons">compare_arrows</span>
+          <span>Сравнение</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer">
+          <span class="material-icons">credit_card</span>
+          <span>Оплатить</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer">
+          <span class="material-icons">local_shipping</span>
+          <span>Отследить</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer relative">
+          <span class="material-icons">shopping_cart</span>
+          <span>Корзина</span>
+          <span class="absolute -top-1 -right-2 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer relative">
+          <span id="wishlist-btn" class="material-icons">favorite</span>
+          <span></span>Избранное</span>
+          <span id="wishlist-count" class="absolute -top-1 -right-2 bg-blue-600 text-white text-xs rounded-full px-1">  0</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer">
+          <span class="material-icons">language</span>
+          <span>O‘zbekcha</span>
+        </div>
+        <div class="flex flex-col items-center text-sm cursor-pointer">
+          <span class="material-icons">person</span>
+          <span>Войти</span>
+        </div>
       </div>
     </div>
 
-    <div class="hidden md:flex items-center gap-6 text-gray-700 text-sm">
-      <div class="flex flex-col items-center cursor-pointer">
-        <span class="material-icons">compare_arrows</span>
-        <span>Сравнение</span>
+    <nav class="bg-white border-t">
+      <div class="max-w-7xl mx-auto px-4 flex items-center gap-6 text-gray-700 text-sm py-2 overflow-x-auto">
+        <a href="#" class="hover:text-blue-600">Супер цена</a>
+        <a href="#" class="hover:text-blue-600">0-0-6</a>
+        <a href="#" class="hover:text-blue-600">Лучшее для студентов</a>
+        <a href="#" class="hover:text-blue-600">Смартфоны</a>
+        <a href="#" class="hover:text-blue-600">Бытовая техника</a>
+        <a href="#" class="hover:text-blue-600">Книги</a>
+        <a href="#" class="hover:text-blue-600">Телевизоры</a>
+        <a href="#" class="hover:text-blue-600">Ноутбуки</a>
       </div>
-
-      <div class="flex flex-col items-center cursor-pointer">
-        <span class="material-icons">credit_card</span>
-        <span>Оплатить</span>
-      </div>
-
-      <div class="flex flex-col items-center cursor-pointer">
-        <span class="material-icons">local_shipping</span>
-        <span>Отследить</span>
-      </div>
-
-      <div class="flex flex-col items-center cursor-pointer relative">
-        <span class="material-icons">shopping_cart</span>
-        <span>Корзина</span>
-        <span class="absolute -top-1 right-2 bg-blue-600 text-white text-xs rounded-full px-1">2</span>
-      </div>
-
-      <div class="flex flex-col items-center cursor-pointer relative">
-        <span class="material-icons">favorite</span>
-        <span>Избранное</span>
-        <span class="absolute -top-1 right-2 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
-      </div>
-
-      <div class="flex flex-col items-center cursor-pointer">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="uz" class="w-6 h-4 rounded">
-        <span>O'zbekcha</span>
-      </div>
-
-      <div class="flex flex-col items-center cursor-pointer">
-        <span class="material-icons">person</span>
-        <span>Shuxrat</span>
-      </div>
-    </div>
-  </div>
-
-  <nav class="bg-white border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 text-gray-700 text-sm py-2 overflow-x-auto">
-      <a href="#" class="hover:text-blue-600 whitespace-nowrap">Супер цена</a>
-      <a href="#" class="hover:text-blue-600 whitespace-nowrap">0-0-6</a>
-      <a href="#" class="hover:text-blue-600 whitespace-nowrap">Лучшее для студентов</a>
-      <a href="#" class="hover:text-blue-600 whitespace-nowrap">Смартфоны</a>
-      <a href="#" class="hover:text-blue-600 whitespace-nowrap">Бытовая техника</a>
-      <a href="#" class="hover:text-blue-600 whitespace-nowrap">Книги</a>
-      <a href="#" class="hover:text-blue-600 whitespace-nowrap">Телевизоры</a>
-      <a href="#" class="hover:text-blue-600 whitespace-nowrap">Ноутбуки</a>
-    </div>
-  </nav>
-</header>
+    </nav>
+  </header>
 
 
   
@@ -294,7 +289,7 @@
         <a href="#" class="text-blue-600 text-sm hover:underline">Все товары</a>
       </div>
 
-      <div class="flex gap-5 overflow-x-auto scrollbar-hide products-wrapper"></div>
+      <div class="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-4 xl:grid-cols-5  gap-3 products-wrapper"></div>
     </div>
   </section>
   <section class="py-10 bg-gray-50">

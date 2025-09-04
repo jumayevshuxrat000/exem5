@@ -56,7 +56,7 @@ async function addUI() {
             Купить в один клик
           </button>
           <button class="add-to-cart bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition cursor-pointer">
-            🛒
+            <i class="fa-solid fa-cart-shopping"></i>
           </button>
         </div>
       `;
