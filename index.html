@@ -23,27 +23,12 @@
 </style>
 
 <body>
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asaxiy Header Responsive</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body class="bg-gray-50">
-
-  <!-- HEADER -->
   <header class="border-b border-gray-200 shadow-sm bg-white">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-3">
 
-      <!-- Logo -->
       <div class="flex items-center gap-3">
         <img src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg" alt="Logo" class="h-8">
       </div>
-
-      <!-- Search (desktop only) -->
       <div class="hidden md:flex flex-1 mx-6">
         <div class="flex border rounded-md overflow-hidden w-full">
           <input type="text" placeholder="Поиск..." class="w-full px-3 py-2 outline-none">
@@ -51,7 +36,6 @@
         </div>
       </div>
 
-      <!-- Icons -->
       <div class="flex items-center gap-6 text-gray-700">
 
         <div class="hidden md:flex flex-col items-center text-sm cursor-pointer">
@@ -69,14 +53,12 @@
           <span>Отследить</span>
         </div>
 
-        <!-- Cart -->
         <div class="flex flex-col items-center text-sm cursor-pointer relative">
           <span class="material-icons">shopping_cart</span>
           <span class="hidden md:block">Корзина</span>
           <span id="cart-count" class="absolute -top-1 -right-2 bg-blue-600 text-white text-xs rounded-full px-1">0</span>
         </div>
 
-        <!-- Wishlist -->
         <div class="flex flex-col items-center text-sm cursor-pointer relative">
           <span class="material-icons">favorite</span>
           <span class="hidden md:block">Избранное</span>
@@ -95,7 +77,6 @@
       </div>
     </div>
 
-    <!-- Search (mobile) -->
     <div class="px-4 pb-2 md:hidden">
       <div class="flex border rounded-md overflow-hidden w-full">
         <input type="text" placeholder="Поиск..." class="w-full px-3 py-2 outline-none">
@@ -103,7 +84,6 @@
       </div>
     </div>
 
-    <!-- NAVBAR (desktop only) -->
     <nav class="bg-white border-t border-gray-100 hidden md:block">
       <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6 text-gray-700 text-sm py-2 overflow-x-auto">
         <a href="#" class="hover:text-blue-600 whitespace-nowrap">Супер цена</a>
@@ -117,8 +97,6 @@
       </div>
     </nav>
   </header>
-
-  <!-- MOBILE BOTTOM MENU -->
   <div class="fixed bottom-0 z-[9999] left-0 right-0 bg-white border-t border-gray-200 shadow-inner md:hidden">
     <div class="flex justify-around text-gray-700 text-xs py-2">
       <div class="flex flex-col items-center">
